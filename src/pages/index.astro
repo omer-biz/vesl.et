@@ -7,8 +7,54 @@ import TechLink from '../components/TechLink.astro';
 import PostPreview from '../components/PostPreview.astro';
 import Footer from '../components/Footer.astro';
 import Email from '../components/Email.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 
 import profile from '../assets/profile.jpg';
+
+const projects = [
+    {
+        title: "amica",
+        description: "A web proxy, which can modfiy request and resposne live using Lua.",
+        tech: ["Rust", "Lua"],
+        imagePath: "/src/assets/projects/amica.png",
+        github: "https://github.com/omer-biz/amica"
+    },
+    {
+        title: "fetan",
+        description: "A web app to learn amharic touch typing.",
+        tech: ["Elm", "Php", "Laravel"],
+        imagePath: "/src/assets/projects/fetan.png",
+        github: "https://github.com/omer-biz/fetan",
+    },
+    {
+        title: "quex",
+        description: "Text based calendar, and Event tracking cli app",
+        tech: ["Rust", "pest"],
+        imagePath: "/src/assets/projects/quex.png",
+        github: "https://github.com/omer-biz/quex",
+    },
+    {
+        title: "sift",
+        description: "Built to research about the friction between having an idea and capturing it.",
+        tech: ["Elm", "Elm-Land"],
+        imagePath: "/src/assets/projects/sift.png",
+        github: "https://github.com/omer-biz/sift",
+    },
+    {
+        title: "impossible",
+        description: "Make impossible states impossible",
+        tech: ["Elm"],
+        imagePath: "/src/assets/projects/impossible.png",
+        github: "https://github.com/omer-biz/impossible",
+    },
+    {
+        title: "project_manager",
+        description: "TUI to manage time spent in a project(directory)",
+        tech: ["C", "termbox2"],
+        imagePath: "/src/assets/projects/project_manager.png",
+        github: "https://github.com/omer-biz/project_manager",
+    },
+];
 
 ---
 
@@ -27,11 +73,11 @@ import profile from '../assets/profile.jpg';
 
         <div>
         <p class="text-2xl md:text-3xl font-bold leading-snug">
-            Hello <span class="text-teal-800 bg-teal-800/5 px-1 rounded-sm">Wanderer</span>,
-            <br />
-            My name is <span class="text-green-800 bg-green-800/5 px-1 rounded-sm">Omer</span>.
-            <br />
-            And I welcome you to my inner thoughts.
+           Welcome,
+            <span class="text-teal-800 bg-teal-800/5 px-1 rounded-sm">wanderer</span>. I'm
+            <span class="text-green-800 bg-green-800/5 px-1 rounded-sm">Omer</span>, and this is my digital
+            <span class="text-teal-800 bg-teal-800/5 px-1 rounded-sm">vessel</span>.
+            Thanks for dropping anchor.
         </p>
         </div>
     </div>
@@ -67,45 +113,29 @@ import profile from '../assets/profile.jpg';
         </div>
     </div>
 
-    <section class="mb-24 p-4 bg-stone-300/50 rounded-sm border-l-4 border-amber-600/50 shadow-sm relative overflow-hidden">
-        <div class="absolute top-0 right-0 p-4 opacity-5 font-bold text-6xl text-stone-900 select-none pointer-events-none">
-            Here Be Dragons.
-        </div>
+    <section class="mb-12">
+    <h2 class="text-lg font-bold mb-8 flex items-center uppercase tracking-widest text-stone-500">
+        <span class="text-amber-600 mr-2">::</span> Projects
+    </h2>
 
-        <h2 class="text-sm uppercase tracking-widest text-stone-500 mb-6 font-bold flex items-center">
-            <span class="text-amber-600 mr-2">-></span> Tooling & Interests
-        </h2>
+    <div class="grid grid-cols-1 gap-8">
+      {projects.map((project) => (
+        <ProjectCard 
+        title={project.title}
+        description={project.description}
+        tech={project.tech}
+        imagePath={project.imagePath}
+        github={project.github}
+        />
+      ))}
+    </div>
 
-        <div class="text-lg leading-loose">
-            <p class="mb-4">
-                I enjoy building resilient systems and exploring low-level abstractions. My current stack revolves around 
-                <TechLink href="https://www.rust-lang.org/" summary="A language empowering everyone to build reliable and efficient software.">Rust</TechLink> 
-                and 
-                <TechLink href="https://axum.rs/" summary="Ergonomic and modular web framework built with Tokio, Tower, and Hyper.">Axum</TechLink> 
-                for the backend, while keeping the frontend predictable with 
-                <TechLink href="https://elm-lang.org/" summary="A functional language for reliable webapps. Compiles to JS with no runtime exceptions.">Elm</TechLink> 
-                or 
-                <span class="text-stone-700 font-bold italic">JS/TS</span> when necessary.
-            </p>
-
-            <p>
-                Lately, I've been diving deeper into the 
-                <span class="text-amber-800 bg-amber-800/5 px-1 rounded-sm">embedded</span> world, writing 
-                <span class="text-stone-700 font-bold">C</span> and 
-                <TechLink href="https://www.lua.org/" summary="A powerful, efficient, lightweight, embeddable scripting language.">Lua</TechLink> 
-                to squeeze performance out of small silicon.
-            </p>
-        </div>
-
-        <p class="text-sm text-stone-500 mt-4 pt-4 border-t border-stone-400/20">
-            * Always learning, usually breaking things in the process.
-        </p>
     </section>
 
     <section>
-        <h2 class="text-lg font-bold mb-8 flex items-center uppercase tracking-widest text-stone-500">
-             <span class="text-emerald-800 mr-2">#</span> Latest Entries
-        </h2>
+    <h2 class="text-lg font-bold mb-8 flex items-center uppercase tracking-widest text-stone-500">
+        <span class="text-amber-600 mr-2">::</span> Posts
+    </h2>
         <ul class="space-y-6">
             <PostPreview 
                 title="Migrating my brain to Org-mode" 

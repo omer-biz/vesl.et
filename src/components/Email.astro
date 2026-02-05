@@ -1,0 +1,42 @@
+<div class="mb-2 flex items-center group">
+  <span class="text-stone-500 text-sm font-bold tracking-widest">email:</span>
+  
+  <button
+    id="email-copy"
+    data-email="omer@vesl.et"
+    class="relative cursor-pointer text-lg font-bold text-orange-800 hover:text-teal-700 transition-colors"
+  >
+    <span class="font-mono">omer [at] vesl [dot] et</span>
+
+    <span 
+      id="copy-tooltip"
+      class="invisible opacity-0 group-hover:visible group-hover:opacity-100 
+             absolute bottom-[130%] left-1/2 -translate-x-1/2 
+             bg-stone-800 text-stone-100 text-xs py-1 px-3 rounded 
+             transition-all duration-200 pointer-events-none whitespace-nowrap
+             after:content-[''] after:absolute after:top-full after:left-1/2 after:-ml-1 after:border-4 after:border-transparent after:border-t-stone-800"
+    >
+      Click to copy
+    </span>
+  </button>
+</div>
+
+<script>
+  const button = document.getElementById('email-copy');
+  const tooltip = document.getElementById('copy-tooltip');
+  const email = button?.getAttribute('data-email');
+
+  button?.addEventListener('click', () => {
+    if (email) {
+      navigator.clipboard.writeText(email);
+      
+      // Feedback UI
+      if (tooltip) {
+        tooltip.textContent = 'Copied!';
+        setTimeout(() => {
+          tooltip.textContent = 'Click to copy';
+        }, 2000);
+      }
+    }
+  });
+</script>

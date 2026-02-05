@@ -1,42 +1,104 @@
 ---
+import { Image } from 'astro:assets';
+
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import TechLink from '../components/TechLink.astro';
 import PostPreview from '../components/PostPreview.astro';
 import Footer from '../components/Footer.astro';
+import Email from '../components/Email.astro';
+
+import profile from '../assets/profile.jpg';
+
 ---
 
 <BaseLayout>
     <Header />
 
-    <section class="mb-24">
-        <p class="text-2xl md:text-3xl font-bold leading-snug mb-8">
-            A static digital garden cultivated with 
-            <span class="text-teal-800 bg-teal-800/5 px-1 rounded-sm">Astro</span>,
-            written in 
-            <span class="text-green-800 bg-green-800/5 px-1 rounded-sm">Org-mode</span>,
-            and deployed from a Linux terminal.
+    <section class="mb-8">
+    <div class="flex flex-col md:flex-row gap-8 items-start mb-8">
+        <figure class="shrink-0">
+            <Image
+                src={profile}
+                alt="A bird sitting on a nest of eggs."
+                class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-sm border-2 border-stone-400/50 p-1 bg-stone-100 shadow-sm"
+            />
+        </figure>
+
+        <div>
+        <p class="text-2xl md:text-3xl font-bold leading-snug">
+            Hello <span class="text-teal-800 bg-teal-800/5 px-1 rounded-sm">Wanderer</span>,
+            <br />
+            My name is <span class="text-green-800 bg-green-800/5 px-1 rounded-sm">Omer</span>.
+            <br />
+            And I welcome you to my inner thoughts.
         </p>
-        <p class="text-lg text-stone-600 leading-relaxed max-w-2xl">
-            Focusing on simplicity, ownership of data, and the quiet corners of the indie web.
-        </p>
+        </div>
+    </div>
+
+    <p class="text-lg text-stone-600 leading-relaxed max-w-2xl">
+        My history with computers goes back to when I was five, watching my
+        uncles figure out how Paint works on Windows XP. Now, I’m not satisfied until I
+        understand every aspect of the technology I’m working on.
+    </p>
     </section>
 
-    <section class="mb-24 p-8 bg-stone-300/50 rounded-sm border-l-4 border-amber-600/50 shadow-sm relative overflow-hidden">
-        <div class="absolute top-0 right-0 p-4 opacity-10 font-bold text-6xl text-amber-600 select-none">
-            Here be dragons
+    <div class="mb-8 flex flex-col items-center justify-center space-y-4">
+        <div class="items-center gap-6">
+            <p>
+                <a 
+                href="https://github.com/omer-biz" 
+                target="_blank"
+                class="group relative text-lg font-bold text-orange-800 hover:text-teal-700 transition-colors flex items-center gap-2"
+                >
+                <span class="text-stone-500 text-sm font-bold tracking-widest">github:</span>
+                <span class="font-mono">[@omer-biz]</span>
+
+                <span class="invisible opacity-0 group-hover:visible group-hover:opacity-100 
+                            absolute bottom-[130%] left-1/2 -translate-x-1/2 
+                            bg-stone-800 text-stone-100 text-xs py-1 px-3 rounded 
+                            transition-all duration-200 pointer-events-none whitespace-nowrap
+                            after:content-[''] after:absolute after:top-full after:left-1/2 after:-ml-1 after:border-4 after:border-transparent after:border-t-stone-800">
+                    checkout omer's cool github
+                </span>
+                </a>
+            </p>
+            <Email />
         </div>
-        
+    </div>
+
+    <section class="mb-24 p-4 bg-stone-300/50 rounded-sm border-l-4 border-amber-600/50 shadow-sm relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-4 opacity-5 font-bold text-6xl text-stone-900 select-none pointer-events-none">
+            Here Be Dragons.
+        </div>
+
         <h2 class="text-sm uppercase tracking-widest text-stone-500 mb-6 font-bold flex items-center">
-            <span class="text-amber-600 mr-2">-></span> Feature Demo: Build-time Context
+            <span class="text-amber-600 mr-2">-></span> Tooling & Interests
         </h2>
-        
-        <p class="text-lg leading-loose">
-            Blind links break flow. Hover over this link to the 
-            <TechLink href="https://orgmode.org" summary="Org mode is a GNU Emacs major mode for keeping notes and authoring.">Org-mode homepage</TechLink> 
-            or 
-            <TechLink href="https://nixos.org" summary="NixOS is a Linux distribution built on top of the Nix package manager.">NixOS</TechLink> 
-            to see the generated summaries in action.
+
+        <div class="text-lg leading-loose">
+            <p class="mb-4">
+                I enjoy building resilient systems and exploring low-level abstractions. My current stack revolves around 
+                <TechLink href="https://www.rust-lang.org/" summary="A language empowering everyone to build reliable and efficient software.">Rust</TechLink> 
+                and 
+                <TechLink href="https://axum.rs/" summary="Ergonomic and modular web framework built with Tokio, Tower, and Hyper.">Axum</TechLink> 
+                for the backend, while keeping the frontend predictable with 
+                <TechLink href="https://elm-lang.org/" summary="A functional language for reliable webapps. Compiles to JS with no runtime exceptions.">Elm</TechLink> 
+                or 
+                <span class="text-stone-700 font-bold italic">JS/TS</span> when necessary.
+            </p>
+
+            <p>
+                Lately, I've been diving deeper into the 
+                <span class="text-amber-800 bg-amber-800/5 px-1 rounded-sm">embedded</span> world, writing 
+                <span class="text-stone-700 font-bold">C</span> and 
+                <TechLink href="https://www.lua.org/" summary="A powerful, efficient, lightweight, embeddable scripting language.">Lua</TechLink> 
+                to squeeze performance out of small silicon.
+            </p>
+        </div>
+
+        <p class="text-sm text-stone-500 mt-4 pt-4 border-t border-stone-400/20">
+            * Always learning, usually breaking things in the process.
         </p>
     </section>
 

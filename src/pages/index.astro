@@ -3,7 +3,6 @@ import { Image } from 'astro:assets';
 
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
-import TechLink from '../components/TechLink.astro';
 import PostPreview from '../components/PostPreview.astro';
 import Footer from '../components/Footer.astro';
 import Email from '../components/Email.astro';
@@ -14,21 +13,21 @@ import profile from '../assets/profile.jpg';
 const projects = [
     {
         title: "amica",
-        description: "A web proxy, which can modfiy request and resposne live using Lua.",
+        description: "A web proxy, which can modfiy request and resposne live using Lua, With hot reloading lua scripts.",
         tech: ["Rust", "Lua"],
         imagePath: "/src/assets/projects/amica.png",
         github: "https://github.com/omer-biz/amica"
     },
     {
         title: "fetan",
-        description: "A web app to learn amharic touch typing.",
+        description: "A web app to learn amharic touch typing. Uses the Power-G sil keyboard from keyman",
         tech: ["Elm", "Php", "Laravel"],
         imagePath: "/src/assets/projects/fetan.png",
         github: "https://github.com/omer-biz/fetan",
     },
     {
         title: "quex",
-        description: "Text based calendar, and Event tracking cli app",
+        description: "Text based calendar, and Event tracking cli app. With support for Ethiopian dates.",
         tech: ["Rust", "pest"],
         imagePath: "/src/assets/projects/quex.png",
         github: "https://github.com/omer-biz/quex",
@@ -42,7 +41,7 @@ const projects = [
     },
     {
         title: "impossible",
-        description: "Make impossible states impossible",
+        description: "Make impossible states impossible, discover the power of algebraic data types and there power to model the real world.",
         tech: ["Elm"],
         imagePath: "/src/assets/projects/impossible.png",
         github: "https://github.com/omer-biz/impossible",
@@ -134,7 +133,7 @@ const projects = [
 
     <section>
     <h2 class="text-lg font-bold mb-8 flex items-center uppercase tracking-widest text-stone-500">
-        <span class="text-amber-600 mr-2">::</span> Posts
+        <span class="text-amber-600 mr-2">::</span> Logs
     </h2>
         <ul class="space-y-6">
             <PostPreview 

@@ -1,0 +1,86 @@
+---
+import { getCollection } from 'astro:content';
+import type { Page, GetStaticPaths } from 'astro';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+    const allLogs = await getCollection('logs');
+    const sortedLogs = allLogs.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+	
+    return paginate(sortedLogs, { pageSize: 10 });
+};
+
+const { page } = Astro.props as { page: Page<any> };
+
+const logsByYear = page.data.reduce((acc, log) => {
+    const year = new Date(log.data.pubDate).getFullYear();
+
+    if (!acc[year]) {
+        acc[year] = [];
+    }
+
+    acc[year].push(log);
+    return acc;
+}, {} as Record<number, any[]>);
+
+const years = Object.keys(logsByYear).sort((a, b) => Number(b) - Number(a));
+---
+<BaseLayout>
+<Header />
+<main class="max-w-3xl mx-auto py-12 px-6 bg-stone-200 text-stone-800 font-mono">
+    <header class="mb-16">
+        <h1 class="text-2xl font-bold text-stone-900 flex items-center">
+            <span class="text-amber-600 mr-2">#</span> Index of Logs
+        </h1>
+        <p class="text-stone-500 mt-2 text-sm italic">"The shortest pencil is longer than the longest memory."</p>
+    </header>
+
+    {years.map((year) => (
+    <section class="mb-16">
+        <div class="flex items-center gap-4 mb-8">
+            <h2 class="text-xl font-bold text-amber-700 bg-amber-700/10 px-2 py-0.5 rounded-sm">{year}</h2>
+            <div class="h-px flex-grow bg-stone-400/30"></div>
+        </div>
+
+        <ul class="space-y-10">
+            {logsByYear[Number(year)].map((log) => (
+            <li class="group flex gap-6 items-start">
+                <div class="w-16 h-16 md:w-20 md:h-20 shrink-0 border border-stone-400/50 p-1 bg-stone-100 overflow-hidden">
+                    <img src={log.data.heroImage} alt="Hero" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300">
+                </div>
+                <div class="flex-grow">
+                    <div class="flex justify-between items-baseline mb-1">
+                        <a href={`/logs/${log.id}`} class="text-lg font-bold group-hover:text-teal-700 underline-offset-4 decoration-2 group-hover:underline">
+                            {log.data.title}
+                        </a>
+                        <span class="text-xs text-stone-400 tabular-nums">
+                            {log.data.pubDate.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit' }).replace("/", "-")}
+                        </span>
+                    </div>
+                    <p class="text-sm text-stone-600 leading-relaxed line-clamp-2 mb-2">
+                        {log.data.description}
+                    </p>
+                    <div class="text-[10px] uppercase tracking-wider text-stone-500 font-bold">
+                        {log.data.tags.map((tag: string) => `#${tag} `)}
+                    </div>
+                </div>
+            </li>
+            ))}
+        </ul>
+    </section>
+    ))}
+    <nav class="mt-24 pt-8 border-t border-stone-400/30 flex justify-between items-center text-sm font-bold">
+        {page.url.prev ? <a href={page.url.prev} class="text-orange-800">[prev]</a> : <span class="text-stone-400">[prev]</span>}
+    
+        <div class="text-stone-500">
+        Page {page.currentPage} of {page.lastPage}
+        </div>
+
+        {page.url.next ? <a href={page.url.next} class="text-orange-800">[next]</a> : <span class="text-stone-400">[next]</span>}
+    </nav>
+</main>
+<Footer />
+</BaseLayout>

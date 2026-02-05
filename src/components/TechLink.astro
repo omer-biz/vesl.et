@@ -1,0 +1,22 @@
+---
+interface Props {
+  href: string;
+  summary: string;
+}
+const { href, summary } = Astro.props;
+---
+<a 
+  href={href} 
+  class="group relative inline-block border-b-2 border-teal-700/40 text-teal-800 transition-all duration-200 hover:bg-teal-700/10 no-underline"
+>
+  <slot />
+  <span class={`
+    invisible opacity-0 group-hover:visible group-hover:opacity-100
+    absolute bottom-[140%] left-1/2 -translate-x-1/2 translate-y-2 group-hover:translate-y-0
+    w-64 p-4 rounded shadow-xl z-50 transition-all duration-200
+    bg-stone-800 text-stone-100 text-sm leading-relaxed pointer-events-none
+    after:content-[''] after:absolute after:top-full after:left-1/2 after:-ml-2 after:border-8 after:border-transparent after:border-t-stone-800
+  `}>
+    {summary}
+  </span>
+</a>

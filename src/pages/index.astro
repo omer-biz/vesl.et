@@ -1,11 +1,73 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import TechLink from '../components/TechLink.astro';
+import PostPreview from '../components/PostPreview.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout>
+    <Header />
+
+    <section class="mb-24">
+        <p class="text-2xl md:text-3xl font-bold leading-snug mb-8">
+            A static digital garden cultivated with 
+            <span class="text-teal-800 bg-teal-800/5 px-1 rounded-sm">Astro</span>,
+            written in 
+            <span class="text-green-800 bg-green-800/5 px-1 rounded-sm">Org-mode</span>,
+            and deployed from a Linux terminal.
+        </p>
+        <p class="text-lg text-stone-600 leading-relaxed max-w-2xl">
+            Focusing on simplicity, ownership of data, and the quiet corners of the indie web.
+        </p>
+    </section>
+
+    <section class="mb-24 p-8 bg-stone-300/50 rounded-sm border-l-4 border-amber-600/50 shadow-sm relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-4 opacity-10 font-bold text-6xl text-amber-600 select-none">
+            Here be dragons
+        </div>
+        
+        <h2 class="text-sm uppercase tracking-widest text-stone-500 mb-6 font-bold flex items-center">
+            <span class="text-amber-600 mr-2">-></span> Feature Demo: Build-time Context
+        </h2>
+        
+        <p class="text-lg leading-loose">
+            Blind links break flow. Hover over this link to the 
+            <TechLink href="https://orgmode.org" summary="Org mode is a GNU Emacs major mode for keeping notes and authoring.">Org-mode homepage</TechLink> 
+            or 
+            <TechLink href="https://nixos.org" summary="NixOS is a Linux distribution built on top of the Nix package manager.">NixOS</TechLink> 
+            to see the generated summaries in action.
+        </p>
+    </section>
+
+    <section>
+        <h2 class="text-lg font-bold mb-8 flex items-center uppercase tracking-widest text-stone-500">
+             <span class="text-emerald-800 mr-2">#</span> Latest Entries
+        </h2>
+        <ul class="space-y-6">
+            <PostPreview 
+                title="Migrating my brain to Org-mode" 
+                date="2026-02-04" 
+                tags="#emacs #workflow" 
+            />
+            <PostPreview 
+                title="Why I chose Astro over Hugo" 
+                date="2026-01-28" 
+                tags="#webdev #astro" 
+            />
+            <PostPreview 
+                title="Nix flake for local dev environments" 
+                date="2026-01-15" 
+                tags="#nix #linux" 
+                faded={true}
+            />
+        </ul>
+        <div class="mt-12">
+            <a href="#" class="text-sm hover:text-orange-800 hover:underline underline-offset-4 decoration-2">
+                [ view all archives -> ]
+            </a>
+        </div>
+    </section>
+
+    <Footer />
+</BaseLayout>

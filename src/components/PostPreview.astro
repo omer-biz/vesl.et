@@ -1,6 +1,7 @@
 ---
 const { title, date, tags, url = "#", faded = false } = Astro.props;
 ---
+
 <li class={`group ${faded ? 'opacity-60 hover:opacity-100' : ''} transition-opacity`}>
     <a href={url} class="block">
         <div class="flex items-baseline justify-between mb-1">
@@ -11,7 +12,10 @@ const { title, date, tags, url = "#", faded = false } = Astro.props;
         <div class="text-sm text-stone-500 flex space-x-4">
              <span>{date}</span>
              <span class="text-stone-400">|</span>
-             <span>{tags}</span>
+
+            <div class="text-[10px] uppercase tracking-wider text-stone-500 font-bold">
+                {tags.map((tag: string) => `#${tag} `)}
+            </div>
         </div>
     </a>
 </li>

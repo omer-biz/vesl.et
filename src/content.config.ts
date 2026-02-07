@@ -4,12 +4,15 @@ import { z } from 'astro/zod';
 
 const logs = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/logs/" }),
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     description: z.string(),
     pubDate: z.coerce.date(),
-    heroImage: z.string().optional().default('/placeholder-hero.jpg'),
+    draft: z.boolean().default(true),
+
+    heroImage: image().optional(),
     updatedDate: z.coerce.date().optional(),
+    categories: z.array(z.string()).default([]),
     tags: z.array(z.string()).default([]),
   })
 });

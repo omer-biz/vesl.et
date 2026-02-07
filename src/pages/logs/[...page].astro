@@ -1,10 +1,12 @@
 ---
+import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import type { Page, GetStaticPaths } from 'astro';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import placeholder from '../../assets/images/placeholder.png';
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
     const allLogs = await getCollection('logs');
@@ -15,7 +17,7 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
 
 const { page } = Astro.props as { page: Page<any> };
 
-const logsByYear = page.data.reduce((acc, log) => {
+const logsByYear = page.data.filter((log) => log.data.draft != true).reduce((acc, log) => {
     const year = new Date(log.data.pubDate).getFullYear();
 
     if (!acc[year]) {
@@ -49,7 +51,7 @@ const years = Object.keys(logsByYear).sort((a, b) => Number(b) - Number(a));
             {logsByYear[Number(year)].map((log) => (
             <li class="group flex gap-6 items-start">
                 <div class="w-16 h-16 md:w-20 md:h-20 shrink-0 border border-stone-400/50 p-1 bg-stone-100 overflow-hidden">
-                    <img src={log.data.heroImage} alt="Hero" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300">
+                    <Image src={log.data.heroImage || placeholder} alt="Hero" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300">
                 </div>
                 <div class="flex-grow">
                     <div class="flex justify-between items-baseline mb-1">

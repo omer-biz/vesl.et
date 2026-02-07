@@ -22,7 +22,7 @@ export async function getStaticPaths() {
 }
 
 const { log, prevLog, nextLog } = Astro.props;
-const { Content, headings } = await render(log);
+const { Content, headings, remarkPluginFrontmatter } = await render(log);
 
 const pubDate = log.data.pubDate.toDateString();
 const filter_heading = heading =>  heading.depth <= 3;
@@ -40,7 +40,7 @@ const filter_heading = heading =>  heading.depth <= 3;
         <div class="flex items-center gap-4 text-xs text-stone-500 uppercase tracking-widest mb-4">
           <span class="bg-amber-700/10 text-amber-800 px-2 py-0.5 rounded-sm">{pubDate}</span>
           <span>•</span>
-          <span>5 min read</span>
+          <span>{remarkPluginFrontmatter.minutesRead}</span>
           {log.data.draft && (
             <span class="border border-red-800/50 text-red-800 px-2 py-0.5 rounded-sm">Draft</span>
           )}

@@ -119,4 +119,4 @@ ecx();
 
 And that's it you send in your shellcode, and boom you a shell.
 
-![demo](./space.gif)
+![demo](/images/space.gif)

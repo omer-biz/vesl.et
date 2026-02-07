@@ -10,55 +10,13 @@ import ProjectCard from '../components/ProjectCard.astro';
 
 import profile from '../assets/profile.jpg';
 import getLogsCollection from '../logsCollection';
-
-const projects = [
-    {
-        title: "amica",
-        description: "A web proxy, which can modfiy request and resposne live using Lua, With hot reloading lua scripts.",
-        tech: ["Rust", "Lua"],
-        imagePath: "/src/assets/projects/amica.png",
-        github: "https://github.com/omer-biz/amica"
-    },
-    {
-        title: "fetan",
-        description: "A web app to learn amharic touch typing. Uses the Power-G sil keyboard from keyman",
-        tech: ["Elm", "Php", "Laravel"],
-        imagePath: "/src/assets/projects/fetan.png",
-        github: "https://github.com/omer-biz/fetan",
-    },
-    {
-        title: "quex",
-        description: "Text based calendar, and Event tracking cli app. With support for Ethiopian dates.",
-        tech: ["Rust", "pest"],
-        imagePath: "/src/assets/projects/quex.png",
-        github: "https://github.com/omer-biz/quex",
-    },
-    {
-        title: "sift",
-        description: "Built to research about the friction between having an idea and capturing it.",
-        tech: ["Elm", "Elm-Land"],
-        imagePath: "/src/assets/projects/sift.png",
-        github: "https://github.com/omer-biz/sift",
-    },
-    {
-        title: "impossible",
-        description: "Make impossible states impossible, discover the power of algebraic data types and there power to model the real world.",
-        tech: ["Elm"],
-        imagePath: "/src/assets/projects/impossible.png",
-        github: "https://github.com/omer-biz/impossible",
-    },
-    {
-        title: "project_manager",
-        description: "TUI to manage time spent in a project(directory)",
-        tech: ["C", "termbox2"],
-        imagePath: "/src/assets/projects/project_manager.png",
-        github: "https://github.com/omer-biz/project_manager",
-    },
-];
+import { getCollection } from 'astro:content';
 
 const latestLogs = (await getLogsCollection())
   .sort((a, b)=> b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 4);
+
+const projects = await getCollection("projects");
 ---
 
 <BaseLayout>
@@ -125,11 +83,11 @@ const latestLogs = (await getLogsCollection())
     <div class="grid grid-cols-1 gap-8">
       {projects.map((project) => (
         <ProjectCard 
-        title={project.title}
-        description={project.description}
-        tech={project.tech}
-        imagePath={project.imagePath}
-        github={project.github}
+            name={project.data.name}
+            description={project.data.description}
+            tech={project.data.tech}
+            image={project.data.image}
+            github={project.data.src}
         />
       ))}
     </div>

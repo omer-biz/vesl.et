@@ -1,1 +1,3 @@
-[]
+[
+    { "id": 1, "word": "invariant", "meaning": "An implicit rule the compiler leaves to the program has to upheld, otherwise the program is expected to behave in unexpected manner" }
+]

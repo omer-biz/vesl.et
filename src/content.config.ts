@@ -25,4 +25,17 @@ const words = defineCollection({
   }),
 });
 
-export const collections = { logs, words };
+const projects = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/projects/" }),
+  schema: ({ image }) => z.object({
+    name: z.string(),
+    description: z.string(),
+    src: z.string(),
+
+    tech: z.array(z.string()).optional().default([]),
+    demo: z.string().optional(),
+    image: image().optional(),
+  })
+})
+
+export const collections = { logs, words, projects };

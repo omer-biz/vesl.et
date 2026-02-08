@@ -4,4 +4,5 @@ description: "Make impossible states impossible, discover the power of algebraic
 tech: ["Elm"]
 image: ./impossible.png
 src: "https://github.com/omer-biz/impossible"
+demo: /impossible/index.html
 ---

@@ -89,45 +89,6 @@ const filter_heading = heading =>  heading.depth <= 3;
       </footer>
     </article>
 
-    <aside class="hidden lg:block w-64 shrink-0">
-      <div class="sticky top-12 p-6 border-l border-stone-400/30">
-        {headings.length != 0 && (
-        <h4 class="text-xs font-bold text-stone-500 uppercase tracking-widest mb-6">Contents</h4>
-        <nav>
-          <ul class="space-y-4 text-sm font-bold">
-            {
-            headings
-                .filter((heading) => (filter_heading(heading)))
-                .map((heading, index) => {
-                    const displayIndex = (index + 1).toString().padStart(2, '0');
-                    return (
-                        <li>
-                        <a 
-                            href={`#${heading.slug}`} 
-                            class="text-stone-500 hover:text-orange-800 transition-colors block"
-                        >
-                            <span class="text-teal-800 mr-1">{displayIndex}.</span> {heading.text}
-                        </a>
-                        </li>
-                    );
-                })
-            }
-          </ul>
-        </nav>
-        )}
-
-        {log.data.tags.length != 0 && (
-        <div class="mt-12 pt-8 border-t border-stone-400/30">
-          <h4 class="text-xs font-bold text-stone-500 uppercase tracking-widest mb-4">Tags</h4>
-          <div class="flex flex-wrap gap-2">
-              {log.data.tags.map((tag: string) => (
-              <span class="text-[10px] text-stone-600 bg-stone-300 px-2 py-0.5 rounded-sm">#{tag}</span>
-              ))}
-          </div>
-        </div>
-        )}
-      </div>
-    </aside>
   </div>
 </main>
 <Footer />

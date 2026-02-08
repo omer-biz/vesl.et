@@ -87,7 +87,8 @@ const projects = await getCollection("projects");
             description={project.data.description}
             tech={project.data.tech}
             image={project.data.image}
-            github={project.data.src}
+            src={project.data.src}
+            demo={project.data.demo}
         />
       ))}
     </div>

@@ -4,6 +4,7 @@ description: ""
 pubDate: 2021-09-08T10:50:34+03:00
 draft: false
 heroImage: "./featured-image.jpg"
+categories: ["Hacking"]
 ---
 
 # I Am Root

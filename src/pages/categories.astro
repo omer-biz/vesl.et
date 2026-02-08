@@ -1,0 +1,79 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import getLogsCollection from "../logsCollection";
+
+const logs = await getLogsCollection();
+
+const categorizedLogs = logs.reduce((categories, log) => {
+    log.data.categories.forEach((category) => {
+        if (!categories[category]) {
+            categories[category] = [];
+        }
+        categories[category].push(log);
+    });
+    return categories;
+}, {} as Record<string, any[]>);
+
+const categoryKeys = Object.keys(categorizedLogs).sort();
+---
+
+<BaseLayout title="Categories | Research Nodes">
+  <Header />
+
+  <main class="max-w-3xl mx-auto py-12 px-6 font-mono">
+    <header class="mb-16">
+      <h1 class="text-2xl font-bold text-stone-900 flex items-center">
+        <span class="text-amber-600 mr-2">::</span> Library Index
+      </h1>
+      <p class="text-stone-500 text-sm mt-2">Logs sorted by thematic nodes.</p>
+    </header>
+
+    <div class="space-y-16">
+      {categoryKeys.map((category) => (
+        <section class="group">
+          <div class="flex items-center gap-4 mb-6">
+            <h2 class="text-sm uppercase tracking-[0.2em] font-bold text-stone-400 group-hover:text-amber-700 transition-colors">
+              {category}
+            </h2>
+            <div class="h-px flex-grow bg-stone-300/50"></div>
+            <span class="text-[10px] text-stone-400 font-bold tabular-nums">
+              ({categorizedLogs[category].length})
+            </span>
+          </div>
+
+          <ul class="space-y-3 border-l-2 border-stone-300/30 ml-2 pl-6">
+            {categorizedLogs[category].map((log) => (
+              <li class="group/item">
+                <a 
+                  href={`/logs/${log.id}`} 
+                  class="flex items-baseline gap-2 text-stone-700 hover:text-teal-800 transition-colors"
+                >
+                  <span class="text-amber-600/50 group-hover/item:text-amber-600 text-xs transition-colors">
+                    ->
+                  </span>
+                  <span class="text-lg font-bold underline decoration-stone-300/50 underline-offset-4 group-hover/item:decoration-teal-800/30">
+                    {log.data.title}
+                  </span>
+                  <span class="flex-grow border-b border-dotted border-stone-300 mb-1"></span>
+                  <span class="text-xs text-stone-400 tabular-nums">
+                    {log.data.pubDate.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit' })}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+
+    {categoryKeys.length === 0 && (
+      <div class="py-24 text-center border-2 border-dashed border-stone-300 rounded-sm">
+        <p class="text-stone-500 italic">This index is currently empty. Adrift in the void.</p>
+      </div>
+    )}
+  </main>
+
+  <Footer />
+</BaseLayout>

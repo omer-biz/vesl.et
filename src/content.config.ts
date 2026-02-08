@@ -12,8 +12,8 @@ const logs = defineCollection({
 
     heroImage: image().optional(),
     updatedDate: z.coerce.date().optional(),
-    categories: z.array(z.string()).default([]),
     tags: z.array(z.string()).default([]),
+    categories: z.array(z.enum(["Misc", "Writeup", "Tutorial", "Hacking", "Essays"])).optional().default([])
   })
 });
 

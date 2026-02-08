@@ -9,7 +9,12 @@ export default defineConfig({
         plugins: [tailwindcss()],
     },
     markdown: {
-        shikiConfig: { theme: 'gruvbox-dark-hard' },
-        remarkPlugins: [remarkReadingTime]
+        remarkPlugins: [remarkReadingTime],
+        shikiConfig: {
+            themes: {
+                light: 'github-light',
+                dark: 'github-dark',
+            },
+        },
     },
 });

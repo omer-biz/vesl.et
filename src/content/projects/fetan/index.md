@@ -4,4 +4,5 @@ description: "A web app to learn amharic touch typing. Uses the Power-G sil keyb
 tech: ["Elm", "Php", "Laravel"]
 image: ./fetan.jpg
 src: https://github.com/omer-biz/fetan
+demo: /fetan/index.html
 ---

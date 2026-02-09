@@ -5,6 +5,7 @@ import { remarkReadingTime } from './remark-reading-time.ts';
 
 // https://astro.build/config
 export default defineConfig({
+    site: "https://www.vesl.et",
     vite: {
         plugins: [tailwindcss()],
     },

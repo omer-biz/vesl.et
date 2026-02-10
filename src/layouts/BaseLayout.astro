@@ -1,12 +1,26 @@
 ---
 import "../styles/global.css";
-const { title = "vesl.et" } = Astro.props;
+const { title } = Astro.props;
 ---
 <html lang="en" class="dark">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>{title}</title>
+		<title>{title && (`vesl.et | ${title}`) || "vesl.et"}</title>
+
+        <meta name="description" content="Hi my name is Omer and I like talking about technology and stuff.">
+
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://vesl.et/">
+        <meta property="og:title" content="Vesl.et — At the edge of the 7 seas">
+        <meta property="og:description" content="Finally you find your self here after all that doom scrolling">
+        <meta property="og:image" content="https://vesl.et/og-image.png">
+
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://vesl.et/">
+        <meta property="twitter:title" content="Vesl.et — At the edge of the 7 seas">
+        <meta property="twitter:description" content="Finally you find your self here after all that doom scrolling">
+        <meta property="twitter:image" content="https://vesl.et/og-image.png">
 	</head>
 	<body class="bg-stone-200 text-stone-800 font-mono p-6 md:p-12 min-h-screen selection:bg-amber-200 selection:text-stone-900">
 		<main class="max-w-3xl mx-auto">

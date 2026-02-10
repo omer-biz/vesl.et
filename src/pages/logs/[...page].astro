@@ -30,7 +30,7 @@ const { page } = Astro.props as { page: Page<any> };
 
 const years = Object.keys(logsByYear).sort((a, b) => Number(b) - Number(a));
 ---
-<BaseLayout>
+<BaseLayout title="logs">
 <Header />
 <main class="max-w-3xl mx-auto py-12 px-6 bg-stone-200 text-stone-800 font-mono">
     <header class="mb-16">

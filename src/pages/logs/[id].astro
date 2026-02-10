@@ -26,7 +26,7 @@ const { Content, headings, remarkPluginFrontmatter } = await render(log);
 const pubDate = log.data.pubDate.toDateString();
 const filter_heading = heading =>  heading.depth <= 3;
 ---
-<BaseLayout>
+<BaseLayout title={log.data.title}>
 <Header />
 <main class="max-w-6xl mx-auto py-12 px-6 font-mono text-stone-800 bg-stone-200">
   <div class="flex flex-col lg:flex-row gap-12">

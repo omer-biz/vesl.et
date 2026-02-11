@@ -2,19 +2,17 @@
 title: "What Is OverTheWire"
 description: ""
 pubDate: 2021-02-09T10:34:24+03:00
-categories: ["Misc"]
-tags: [ctf, ctfs, overthewire, hacking]
+categories: ["Essay"]
+tags: [ctf, overthewire, hacking]
 draft: false
 ---
-
-# What is OverTheWire
 
 [Overthewire](https://www.overthewire.org) is a really good resource for someone really new to __cybersecurity__ to learn
 about __cybersecurity__. It has a hands on approach of teaching things. It has what I call
 Seasons. These so called Seasons are not actually numbered but rather named,
 and each season has an episode. At least that's how I imagine it in my head.
 
-<!-- ![overthewire homepage](./Pictures/screenshot_Feb_09_10:51:32_AM.png) -->
+![overthewire homepage](./Pictures/screenshot_Feb_09_10:51:32_AM.png)
 
 Each season teaches a different cybersecurity concept. For example season 1 (Bandit)
 teaches about the Linux Operating System. And the way they do it is awesome. You don't 

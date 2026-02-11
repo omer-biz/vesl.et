@@ -2,7 +2,7 @@
 title: The Shopkeepers Paradox
 description: "When the aether decides for you"
 pubDate: 2026-01-22
-categories: ["Essays"]
+categories: ["Essay"]
 tags: ["shopkeeper", "independence", "setup"]
 heroImage: ./re4_merchant.png
 draft: false

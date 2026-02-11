@@ -29,6 +29,7 @@ const { page } = Astro.props as { page: Page<any> };
 }, {} as Record<number, any[]>);
 
 const years = Object.keys(logsByYear).sort((a, b) => Number(b) - Number(a));
+const cleanBody = (log) => log.body.replace(/[#*`_]/g, '');
 ---
 <BaseLayout title="logs">
 <Header />
@@ -63,7 +64,9 @@ const years = Object.keys(logsByYear).sort((a, b) => Number(b) - Number(a));
                         </span>
                     </div>
                     <p class="text-sm text-stone-600 leading-relaxed line-clamp-2 mb-2">
-                        {log.data.description}
+                        {log.data.description != ""
+                            && (log.data.description)
+                            || (cleanBody(log))}
                     </p>
                     <div class="text-[10px] uppercase tracking-wider text-stone-500 font-bold">
                         {log.data.tags.map((tag: string) => `#${tag} `)}

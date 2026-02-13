@@ -22,7 +22,7 @@ const categoryKeys = Object.keys(categorizedLogs).sort();
 <BaseLayout title="categories">
   <Header />
 
-  <main class="max-w-3xl mx-auto py-12 px-6 font-mono">
+  <main class="max-w-3xl mx-auto py-12 md:px-6 font-mono">
     <header class="mb-16">
       <h1 class="text-2xl font-bold text-stone-900 flex items-center">
         <span class="text-amber-600 mr-2">::</span> Library Index
@@ -43,7 +43,7 @@ const categoryKeys = Object.keys(categorizedLogs).sort();
             </span>
           </div>
 
-          <ul class="space-y-3 border-l-2 border-stone-300/30 ml-2 pl-6">
+          <ul class="space-y-3 border-l-2 border-stone-300/30 ml-2 md:pl-6">
             {categorizedLogs[category].map((log) => (
               <li class="group/item">
                 <a 
@@ -53,7 +53,7 @@ const categoryKeys = Object.keys(categorizedLogs).sort();
                   <span class="text-amber-600/50 group-hover/item:text-amber-600 text-xs transition-colors">
                     ->
                   </span>
-                  <span class="text-lg font-bold underline decoration-stone-300/50 underline-offset-4 group-hover/item:decoration-teal-800/30">
+                  <span class="text-xs md:text-lg font-bold underline decoration-stone-300/50 underline-offset-4 group-hover/item:decoration-teal-800/30">
                     {log.data.title}
                   </span>
                   <span class="flex-grow border-b border-dotted border-stone-300 mb-1"></span>

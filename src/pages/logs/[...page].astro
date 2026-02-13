@@ -1,6 +1,5 @@
 ---
 import { Image } from 'astro:assets';
-import { getCollection } from 'astro:content';
 import type { Page, GetStaticPaths } from 'astro';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
@@ -33,7 +32,7 @@ const cleanBody = (log) => log.body.replace(/[#*`_]/g, '');
 ---
 <BaseLayout title="logs">
 <Header />
-<main class="max-w-3xl mx-auto py-12 px-6 bg-stone-200 text-stone-800 font-mono">
+<main class="max-w-3xl mx-auto py-8 md:px-6 bg-stone-200 text-stone-800 font-mono">
     <header class="mb-16">
         <h1 class="text-2xl font-bold text-stone-900 flex items-center">
             <span class="text-amber-600 mr-2">#</span> Index of Logs
@@ -42,38 +41,51 @@ const cleanBody = (log) => log.body.replace(/[#*`_]/g, '');
     </header>
 
     {years.map((year) => (
-    <section class="mb-16">
+    <section class="mb-12 px-2 md:px-0"> {/* Added padding for mobile safety */}
         <div class="flex items-center gap-4 mb-8">
-            <h2 class="text-xl font-bold text-amber-700 bg-amber-700/10 px-2 py-0.5 rounded-sm">{year}</h2>
-            <div class="h-px flex-grow bg-stone-400/30"></div>
+        <h2 class="text-md md:text-xl font-bold text-amber-700 bg-amber-700/10 px-2 py-0.5 rounded-sm">{year}</h2>
+        <div class="h-px flex-grow bg-stone-400/30"></div>
         </div>
 
         <ul class="space-y-10">
-            {logsByYear[Number(year)].map((log) => (
-            <li class="group flex gap-6 items-start">
-                <div class="w-16 h-16 md:w-20 md:h-20 shrink-0 border border-stone-400/50 p-1 bg-stone-100 overflow-hidden">
-                    <Image src={log.data.heroImage || placeholder} alt="Hero" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300">
+        {logsByYear[Number(year)].map((log) => (
+            <li class="group flex gap-4 md:gap-6 items-start">
+            {/* Image Container */}
+            <div class="w-16 h-16 md:w-20 md:h-20 shrink-0 border border-stone-400/50 p-1 bg-stone-100 overflow-hidden">
+                <Image 
+                src={log.data.heroImage || placeholder} 
+                alt="Hero" 
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" 
+                />
+            </div>
+
+            {/* Text Content Container - Added min-w-0 */}
+            <div class="flex-grow min-w-0">
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
+                <a 
+                    href={`/logs/${log.id}`} 
+                    class="text-sm md:text-lg font-bold group-hover:text-teal-700 underline-offset-4 decoration-2 group-hover:underline truncate"
+                >
+                    {log.data.title}
+                </a>
+                <span class="text-[10px] md:text-xs text-stone-400 tabular-nums shrink-0">
+                    {log.data.pubDate.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit' }).replace("/", "-")}
+                </span>
                 </div>
-                <div class="flex-grow">
-                    <div class="flex justify-between items-baseline mb-1">
-                        <a href={`/logs/${log.id}`} class="text-lg font-bold group-hover:text-teal-700 underline-offset-4 decoration-2 group-hover:underline">
-                            {log.data.title}
-                        </a>
-                        <span class="text-xs text-stone-400 tabular-nums">
-                            {log.data.pubDate.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit' }).replace("/", "-")}
-                        </span>
-                    </div>
-                    <p class="text-sm text-stone-600 leading-relaxed line-clamp-2 mb-2">
-                        {log.data.description != ""
-                            && (log.data.description)
-                            || (cleanBody(log))}
-                    </p>
-                    <div class="text-[10px] uppercase tracking-wider text-stone-500 font-bold">
-                        {log.data.tags.map((tag: string) => `#${tag} `)}
-                    </div>
+
+                <p class="text-xs md:text-sm text-stone-600 leading-relaxed line-clamp-1 mb-2">
+                {log.data.description != "" ? log.data.description : cleanBody(log)}
+                </p>
+
+                {/* Tags - Added flex-wrap */}
+                <div class="flex flex-wrap gap-2 text-[10px] uppercase tracking-wider text-stone-500 font-bold">
+                {log.data.tags.map((tag: string) => (
+                    <span>#{tag}</span>
+                ))}
                 </div>
+            </div>
             </li>
-            ))}
+        ))}
         </ul>
     </section>
     ))}

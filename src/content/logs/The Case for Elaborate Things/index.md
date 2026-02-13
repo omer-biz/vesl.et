@@ -5,6 +5,7 @@ pubDate: 2025-12-02
 categories: ["Essay"]
 tags: []
 heroImage: ./elaborate.png
+draft: false
 ---
 
 I feel compelled to describe what I mean by “elaborate” things. These are

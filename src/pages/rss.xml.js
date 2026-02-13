@@ -1,5 +1,5 @@
 import rss from '@astrojs/rss';
-import getLogsCollection from '../logsCollection';
+import getLogsCollection from '../lib/logsCollection';
 
 export async function GET(context) {
     const logs = await getLogsCollection();

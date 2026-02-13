@@ -9,7 +9,7 @@ import Email from '../components/Email.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 
 import profile from '../assets/profile.jpg';
-import getLogsCollection from '../logsCollection';
+import getLogsCollection from '../lib/logsCollection';
 import { getCollection } from 'astro:content';
 
 const latestLogs = (await getLogsCollection())

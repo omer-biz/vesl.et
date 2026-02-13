@@ -1,0 +1,43 @@
+---
+import { getLinkPreview } from "link-preview-js";
+import { getCachedLinkPreview } from "../lib/linkCache.ts";
+
+const { href, text } = Astro.props;
+
+let data = null;
+
+try {
+  // Wrap in a try/catch so one dead link doesn't sink the whole ship
+  data = await getCachedLinkPreview(href, getLinkPreview);
+} catch (error) {
+  console.error(`[Signal Lost] Link preview failed for ${href}`);
+}
+---
+
+<span class="relative group inline-block">
+  <a 
+    href={href} 
+    target="_blank" 
+    class="underline decoration-teal-700 hover:text-orange-800 transition-colors cursor-pointer"
+  >
+    {text}
+  </a>
+
+  {data && (
+    <span class="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 
+                 opacity-0 group-hover:opacity-100 transition-all duration-300 
+                 z-50 px-3 py-2 bg-stone-800 text-stone-100 text-[10px] leading-relaxed 
+                 border border-stone-600 shadow-xl rounded-sm
+                 hidden md:block"> 
+      <span class="block text-amber-500 font-bold mb-1 uppercase tracking-tighter truncate">
+        [ {data.title || 'Unknown Signal'} ]
+      </span>
+      
+      <span class="line-clamp-3">
+        {data.description || 'No data available in this sector.'}
+      </span>
+      
+      <span class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-stone-800"></span>
+    </span>
+  )}
+</span>

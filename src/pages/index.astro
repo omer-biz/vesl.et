@@ -1,20 +1,21 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import PostPreview from '../components/PostPreview.astro';
-import Footer from '../components/Footer.astro';
-import Email from '../components/Email.astro';
-import ProjectCard from '../components/ProjectCard.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import PostPreview from "../components/PostPreview.astro";
+import Footer from "../components/Footer.astro";
+import Email from "../components/Email.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import GithubTracker from "../components/GithubTracker.jsx";
 
-import profile from '../assets/profile.jpg';
-import getLogsCollection from '../lib/logsCollection';
-import { getCollection } from 'astro:content';
+import profile from "../assets/profile.jpg";
+import getLogsCollection from "../lib/logsCollection";
+import { getCollection } from "astro:content";
 
 const latestLogs = (await getLogsCollection())
-  .sort((a, b)=> b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 4);
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .slice(0, 4);
 
 const projects = await getCollection("projects");
 ---
@@ -23,98 +24,134 @@ const projects = await getCollection("projects");
     <Header />
 
     <section class="mb-8">
-    <div class="flex flex-col md:flex-row gap-8 items-start mb-8">
-        <figure class="shrink-0">
-            <Image
-                src={profile}
-                alt="A bird sitting on a nest of eggs."
-                class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-sm border-2 border-stone-400/50 p-1 bg-stone-100 shadow-sm"
-            />
-        </figure>
+        <div class="flex flex-col md:flex-row gap-8 items-start mb-8">
+            <figure class="shrink-0">
+                <Image
+                    src={profile}
+                    alt="A bird sitting on a nest of eggs."
+                    class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-sm border-2 border-stone-400/50 p-1 bg-stone-100 shadow-sm"
+                />
+            </figure>
 
-        <div>
-        <p class="text-2xl md:text-3xl font-bold leading-snug">
-           Welcome,
-            <span class="text-teal-800 bg-teal-800/5 px-1 rounded-sm">wanderer</span>. I'm
-            <span class="text-green-800 bg-green-800/5 px-1 rounded-sm">Omer</span>, and this is my digital
-            <span class="text-blue-800 bg-blue-800/5 px-1 rounded-sm">vessel</span>.
-            Thanks for dropping
-            <span class="text-red-800 bg-red-800/5 px-1 rounded-sm">anchor</span>.
+            <div>
+                <p class="text-2xl md:text-3xl font-bold leading-snug">
+                    Welcome,
+                    <span class="text-teal-800 bg-teal-800/5 px-1 rounded-sm"
+                        >wanderer</span
+                    >. I'm
+                    <span class="text-green-800 bg-green-800/5 px-1 rounded-sm"
+                        >Omer</span
+                    >, and this is my digital
+                    <span class="text-blue-800 bg-blue-800/5 px-1 rounded-sm"
+                        >vessel</span
+                    >. Thanks for dropping
+                    <span class="text-red-800 bg-red-800/5 px-1 rounded-sm"
+                        >anchor</span
+                    >.
+                </p>
+            </div>
+        </div>
+
+        <p class="text-lg text-stone-600 leading-relaxed max-w-2xl">
+            My history with computers goes back to when I was five, watching my
+            uncles figure out how Paint works on Windows XP. Now, I’m not
+            satisfied until I understand every aspect of the technology I’m
+            working on.
         </p>
-        </div>
-    </div>
 
-    <p class="text-lg text-stone-600 leading-relaxed max-w-2xl">
-        My history with computers goes back to when I was five, watching my
-        uncles figure out how Paint works on Windows XP. Now, I’m not satisfied until I
-        understand every aspect of the technology I’m working on.
-    </p>
-    </section>
+        <section class="mb-12 mt-8">
+            <h2
+                class="text-lg font-bold mb-4 flex items-center uppercase tracking-widest text-stone-500"
+            >
+                <span class="text-amber-600 mr-2">::</span> Contributions
+            </h2>
+            <div
+                class="w-full max-w-4xl opacity-80 hover:opacity-100 transition-opacity"
+            >
+                <GithubTracker client:visible />
+            </div>
+        </section>
 
-    <div class="mb-8 flex flex-col items-center justify-center space-y-4">
-        <div class="items-center gap-6">
-            <p>
-                <a 
-                href="https://github.com/omer-biz" 
-                target="_blank"
-                class="group relative text-lg font-bold text-orange-800 hover:text-teal-700 transition-colors flex items-center gap-2"
-                >
-                <span class="text-stone-500 text-sm font-bold tracking-widest">github:</span>
-                <span class="font-mono">[@omer-biz]</span>
+        <div class="mb-8 flex flex-col items-center justify-center space-y-4">
+            <div class="items-center gap-6">
+                <p>
+                    <a
+                        href="https://github.com/omer-biz"
+                        target="_blank"
+                        class="group relative text-lg font-bold text-orange-800 hover:text-teal-700 transition-colors flex items-center gap-2"
+                    >
+                        <span
+                            class="text-stone-500 text-sm font-bold tracking-widest"
+                            >github:</span
+                        >
+                        <span class="font-mono">[@omer-biz]</span>
 
-                <span class="invisible opacity-0 group-hover:visible group-hover:opacity-100 
-                            absolute bottom-[130%] left-1/2 -translate-x-1/2 
-                            bg-stone-800 text-stone-100 text-xs py-1 px-3 rounded 
+                        <span
+                            class="invisible opacity-0 group-hover:visible group-hover:opacity-100
+                            absolute bottom-[130%] left-1/2 -translate-x-1/2
+                            bg-stone-800 text-stone-100 text-xs py-1 px-3 rounded
                             transition-all duration-200 pointer-events-none whitespace-nowrap
-                            after:content-[''] after:absolute after:top-full after:left-1/2 after:-ml-1 after:border-4 after:border-transparent after:border-t-stone-800">
-                    checkout omer's cool github
-                </span>
+                            after:content-[''] after:absolute after:top-full after:left-1/2 after:-ml-1 after:border-4 after:border-transparent after:border-t-stone-800"
+                        >
+                            checkout omer's cool github
+                        </span>
+                    </a>
+                </p>
+                <Email />
+            </div>
+        </div>
+
+        <section class="mb-12">
+            <h2
+                class="text-lg font-bold mb-8 flex items-center uppercase tracking-widest text-stone-500"
+            >
+                <span class="text-amber-600 mr-2">::</span> Projects
+            </h2>
+
+            <div class="grid grid-cols-1 gap-8">
+                {
+                    projects.map((project) => (
+                        <ProjectCard
+                            name={project.data.name}
+                            description={project.data.description}
+                            tech={project.data.tech}
+                            image={project.data.image}
+                            src={project.data.src}
+                            demo={project.data.demo}
+                        />
+                    ))
+                }
+            </div>
+        </section>
+
+        <section>
+            <h2
+                class="text-lg font-bold mb-8 flex items-center uppercase tracking-widest text-stone-500"
+            >
+                <span class="text-amber-600 mr-2">::</span> Logs
+            </h2>
+            <ul class="space-y-6">
+                {
+                    latestLogs.map((log) => (
+                        <PostPreview
+                            title={log.data.title}
+                            url={`/logs/${log.id}`}
+                            date={log.data.pubDate.toDateString()}
+                            tags={log.data.tags}
+                        />
+                    ))
+                }
+            </ul>
+            <div class="mt-12">
+                <a
+                    href="/logs"
+                    class="text-sm hover:text-orange-800 hover:underline underline-offset-4 decoration-2"
+                >
+                    [ view all archives -> ]
                 </a>
-            </p>
-            <Email />
-        </div>
-    </div>
+            </div>
+        </section>
 
-    <section class="mb-12">
-    <h2 class="text-lg font-bold mb-8 flex items-center uppercase tracking-widest text-stone-500">
-        <span class="text-amber-600 mr-2">::</span> Projects
-    </h2>
-
-    <div class="grid grid-cols-1 gap-8">
-      {projects.map((project) => (
-        <ProjectCard 
-            name={project.data.name}
-            description={project.data.description}
-            tech={project.data.tech}
-            image={project.data.image}
-            src={project.data.src}
-            demo={project.data.demo}
-        />
-      ))}
-    </div>
-
+        <Footer />
     </section>
-
-    <section>
-    <h2 class="text-lg font-bold mb-8 flex items-center uppercase tracking-widest text-stone-500">
-        <span class="text-amber-600 mr-2">::</span> Logs
-    </h2>
-        <ul class="space-y-6">
-            {latestLogs.map((log) => (
-            <PostPreview 
-                title={log.data.title}
-                url={`/logs/${log.id}`}
-                date={log.data.pubDate.toDateString()}
-                tags={log.data.tags}
-            />
-            ))}
-        </ul>
-        <div class="mt-12">
-            <a href="/logs" class="text-sm hover:text-orange-800 hover:underline underline-offset-4 decoration-2">
-                [ view all archives -> ]
-            </a>
-        </div>
-    </section>
-
-    <Footer />
 </BaseLayout>

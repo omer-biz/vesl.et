@@ -1,7 +1,15 @@
+---
+import VeslDef from './VeslDef.astro';
+---
+
 <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 border-b border-stone-400/30 pb-6">
     <div class="mb-4 md:mb-0">
         <h1 class="text-xl font-bold tracking-tight text-orange-800">
-            <a href="/"><span class="text-stone-500 mr-1">$</span> vesl.et</a>
+            <VeslDef term="vesl.et" position="bottom">
+                <a href="/" class="hover:text-orange-900 transition-colors">
+                    <span class="text-stone-500 mr-1">$</span> vesl.et
+                </a>
+            </VeslDef>
         </h1>
     </div>
     <nav class="space-x-6 text-sm lowercase">

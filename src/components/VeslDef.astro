@@ -1,0 +1,37 @@
+---
+const { term = "vesl.et", position = "bottom" } = Astro.props;
+---
+
+<span class="relative group inline-block">
+  <slot />
+
+  <span class={`pointer-events-none absolute left-0 mt-2 w-72 
+               opacity-0 group-hover:opacity-100 transition-all duration-300 
+               z-50 px-4 py-3 bg-stone-900 text-stone-200 text-xs leading-relaxed 
+               border border-stone-700 shadow-xl rounded-sm hidden md:block
+               ${position === 'bottom' ? 'top-full' : 'bottom-full mb-2'}`}>
+    
+    <div class="flex justify-between items-center border-b border-stone-700 pb-2 mb-2">
+      <span class="text-amber-500 font-bold uppercase tracking-tighter">[ LOGBOOK_ENTRY ]</span>
+      <span class="text-[9px] text-stone-500 font-mono">SECTOR: 7_SEAS</span>
+    </div>
+    
+    <p class="font-mono text-[11px] mb-2 text-stone-300">
+      <span class="text-teal-500 uppercase">Vesl</span> — shorthand for <span class="italic">Vessel</span>.
+    </p>
+    
+    <p class="text-stone-400 italic leading-snug">
+      Specifically, a <span class="text-stone-200">"Thought Vessel"</span>: A craft designed for ideas to wander through the vast, unpredictable currents of the seven seas of the internet.
+    </p>
+
+    <div class="mt-3 pt-2 border-t border-stone-800 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="w-1.5 h-1.5 bg-teal-500 rounded-full animate-pulse"></span>
+        <span class="text-[9px] text-stone-600 uppercase font-bold tracking-widest">Status: Adrift</span>
+      </div>
+      <span class="text-[9px] text-stone-700 font-mono">⚓</span>
+    </div>
+    
+    <span class="absolute bottom-full left-4 border-8 border-transparent border-b-stone-900"></span>
+  </span>
+</span>

@@ -15,7 +15,7 @@ const { title, meta = defaultMeta } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>{title && (`vesl.et | ${title}`) || "vesl.et"}</title>
-        <meta name="description" content="{meta.description}">
+        <meta name="description" content={meta.description}>
 
         <meta itemprop="name" content={meta.title} />
         <meta itemprop="description" content={meta.description}/>

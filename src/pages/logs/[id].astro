@@ -24,8 +24,16 @@ const { log, prevLog, nextLog } = Astro.props;
 const { Content, remarkPluginFrontmatter } = await render(log);
 
 const pubDate = log.data.pubDate.toDateString();
+
+const meta = {
+  url: new URL(Astro.url.pathname, "https://vesl.et").href,
+  title: `vesl.et — ${log.data.title}`,
+  description: log.data.description,
+  image: log.data.heroImage?.src ?? "https://vesl.et/og-image.png",
+};
+
 ---
-<BaseLayout title={log.data.title}>
+<BaseLayout title={log.data.title} meta={meta}>
 <Header />
 <main class="max-w-6xl mx-auto py-12 md:px-6 font-mono text-stone-800 bg-stone-200">
   <div class="flex flex-col lg:flex-row gap-12">

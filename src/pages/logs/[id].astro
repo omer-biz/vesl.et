@@ -25,11 +25,15 @@ const { Content, remarkPluginFrontmatter } = await render(log);
 
 const pubDate = log.data.pubDate.toDateString();
 
+const metaImage = log.data.heroImage
+  ? new URL(log.data.heroImage.src, Astro.site).href
+  : new URL("/og-image.png", Astro.site).href;
+
 const meta = {
   url: new URL(Astro.url.pathname, "https://vesl.et").href,
   title: `vesl.et — ${log.data.title}`,
   description: log.data.description,
-  image: log.data.heroImage?.src ?? "https://vesl.et/og-image.png",
+  image: metaImage
 };
 
 ---

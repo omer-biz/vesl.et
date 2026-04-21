@@ -14,8 +14,7 @@ attracted to moving toys than fabric. Specifically, I had my eye on this RC car
 on display while I was out in the market with my mother.
 
 "I saw some good clothes today. When do you think we should buy him some for
-Eid?" my mother asked, minding her own business, even though the question was
-directed at my father.
+Eid?" my mother asked, even though the question was directed at my father.
 
 I immediately cut in. "I don't want clothes this Eid! I would rather you buy me
 that RC car!" I yelled from my corner.

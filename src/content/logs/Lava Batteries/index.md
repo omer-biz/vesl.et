@@ -71,7 +71,14 @@ establishment of the new IP Tribunal, the robust laws we need finally exist. But
 it’s not enough for these legal frameworks to just sit on paper. Original
 manufacturers must aggressively utilize these new, faster legal avenues to
 penalize the factories producing fakes, turning these fresh laws into
-actionable, on-the-ground realities.
+actionable, on-the-ground realities. To bridge the gap between the law and the
+street, manufacturers could introduce an 'authenticity bounty'—effectively a bug
+bounty program for the physical market. By offering rewards to customers who
+blow the whistle on retailers selling fakes, the brand turns every disappointed
+child and every cheated parent into an active enforcer. This transforms the
+consumer from a silent victim of deception into a motivated participant in
+cleaning up the market, making it impossible for knockoffs to hide in plain
+sight.
 
 However, because we are dealing with a low-literacy environment, legal paperwork
 isn't enough to help the average buyer on the street. We also need immediate

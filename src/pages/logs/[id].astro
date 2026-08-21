@@ -48,7 +48,7 @@ const meta = {
         </h1>
 
         <div class="flex items-center gap-4 text-xs text-stone-500 uppercase tracking-widest mb-4">
-          <span class="bg-amber-700/10 text-amber-800 px-2 py-0.5 rounded-sm">{pubDate}</span>
+          <time datetime={log.data.pubDate.toISOString()} class="bg-amber-700/10 text-amber-800 px-2 py-0.5 rounded-sm">{pubDate}</time>
           <span>•</span>
           <span>{remarkPluginFrontmatter.minutesRead}</span>
           {log.data.draft && (
@@ -63,7 +63,7 @@ const meta = {
 
       {log.data.heroImage && (
       <figure class="mb-12 border-2 border-stone-400/30 p-2 bg-stone-100 shadow-sm">
-          <Image src={log.data.heroImage} alt="Abstract tech background" class="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700" />
+          <Image src={log.data.heroImage} alt={log.data.title} class="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700" />
           <!-- <figcaption class="mt-2 text-[10px] text-stone-400 uppercase text-center">
                </figcaption> -->
       </figure> 

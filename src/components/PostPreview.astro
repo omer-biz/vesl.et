@@ -10,7 +10,9 @@ const { title, date, tags, url = "#", faded = false } = Astro.props;
             </h3>
         </div>
         <div class="text-sm text-stone-500 flex space-x-4">
-             <span>{date}</span>
+             <time datetime={new Date(date).toISOString()}>
+               {new Date(date).toDateString()}
+             </time>
              <span class="text-stone-400">|</span>
 
             <div class="text-[10px] uppercase tracking-wider text-stone-500 font-bold">

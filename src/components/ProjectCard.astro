@@ -8,7 +8,7 @@ const { name, description, tech, image, src, demo } = Astro.props;
   <div class="md:w-48 w-full h-48 md:h-auto shrink-0 border-b md:border-b-0 md:border-r border-stone-400/30 overflow-hidden">
       <Image
           src={image} 
-          alt={name} 
+          alt={`Screenshot of ${name}`} 
           class="w-full h-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
       />
   </div>
@@ -18,8 +18,8 @@ const { name, description, tech, image, src, demo } = Astro.props;
       <div class="flex justify-between items-start mb-2">
         <h3 class="text-xl font-bold text-stone-800">{name}</h3>
         <div class="flex gap-3 text-sm">
-          {src && <a href={src} class="text-orange-800 hover:text-teal-700 font-bold">[src]</a>}
-          {demo && <a href={demo} class="text-orange-800 hover:text-teal-700 font-bold">[live]</a>}
+          {src && <a href={src} target="_blank" rel="noopener noreferrer" class="text-orange-800 hover:text-teal-700 font-bold">[src]</a>}
+          {demo && <a href={demo} target="_blank" rel="noopener noreferrer" class="text-orange-800 hover:text-teal-700 font-bold">[live]</a>}
         </div>
       </div>
 

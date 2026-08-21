@@ -7,7 +7,7 @@ export default function GithubTracker() {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full overflow-x-auto no-scrollbar">
       <GitHubCalendar
         username="omer-biz"
         theme={vesselTheme}

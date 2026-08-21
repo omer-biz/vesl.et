@@ -29,9 +29,16 @@ import VeslDef from './VeslDef.astro';
     <script>
       const themeToggle = document.getElementById('theme-toggle');
       themeToggle?.addEventListener('click', () => {
+        document.documentElement.classList.add('theme-transition');
+        
         document.documentElement.classList.toggle('dark');
         const isDark = document.documentElement.classList.contains('dark');
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        
+        // Remove the transition class after the animation completes
+        setTimeout(() => {
+          document.documentElement.classList.remove('theme-transition');
+        }, 400);
       });
     </script>
 </header>

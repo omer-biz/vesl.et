@@ -18,6 +18,38 @@ const latestLogs = (await getLogsCollection())
     .slice(0, 4);
 
 const projects = await getCollection("projects");
+
+const ossContributions = [
+  {
+    repo: "pest-parser",
+    url: "https://github.com/pest-parser",
+    description: "Moved parser execution to a Web Worker, added rule states, and improved documentation.",
+    prs: [
+      { title: "#69", url: "https://github.com/pest-parser/site/pull/69" },
+      { title: "#65", url: "https://github.com/pest-parser/site/pull/65" },
+      { title: "#64", url: "https://github.com/pest-parser/site/pull/64" },
+    ]
+  },
+  {
+    repo: "ratatui",
+    url: "https://github.com/ratatui/ratatui-website",
+    description: "Documentation improvements and typo fixes.",
+    prs: [
+      { title: "#156", url: "https://github.com/ratatui/ratatui-website/pull/156" },
+      { title: "#150", url: "https://github.com/ratatui/ratatui-website/pull/150" },
+      { title: "#118", url: "https://github.com/ratatui/ratatui-website/pull/118" },
+    ]
+  },
+  {
+    repo: "picterm",
+    url: "https://github.com/ksk001100/picterm",
+    description: "Added circular scrolling and search functionality to the terminal image viewer.",
+    prs: [
+      { title: "#7", url: "https://github.com/ksk001100/picterm/pull/7" },
+      { title: "#5", url: "https://github.com/ksk001100/picterm/pull/5" },
+    ]
+  }
+];
 ---
 
 <BaseLayout>
@@ -69,6 +101,36 @@ const projects = await getCollection("projects");
                 class="w-full max-w-4xl opacity-100 transition-opacity"
             >
                 <GithubTracker client:visible />
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-stone-300 dark:border-stone-700/50">
+                <h3 class="text-sm font-bold uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-6"><span class="text-amber-600 dark:text-amber-500 mr-2">*</span> Notable Pull Requests</h3>
+                <ul class="space-y-6">
+                    {ossContributions.map(oss => (
+                        <li class="flex flex-col gap-2">
+                            <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-2">
+                                <a href={oss.url} target="_blank" rel="noopener noreferrer" class="font-bold text-orange-800 dark:text-orange-400 hover:text-teal-700 dark:hover:text-teal-400 hover:underline underline-offset-4 decoration-2 shrink-0 text-base md:text-lg">
+                                    {oss.repo}
+                                </a>
+                                <span class="text-stone-400 dark:text-stone-500 hidden md:inline">—</span>
+                                <span class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+                                    {oss.description}
+                                </span>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-2 text-xs font-bold text-stone-500 dark:text-stone-400">
+                                <span class="uppercase tracking-widest text-[10px]">PRs:</span>
+                                {oss.prs.map((pr, index) => (
+                                    <span class="flex items-center">
+                                        <a href={pr.url} target="_blank" rel="noopener noreferrer" class="hover:text-teal-700 dark:hover:text-teal-400 transition-colors">
+                                            [{pr.title}]
+                                        </a>
+                                        {index !== oss.prs.length - 1 && <span class="text-stone-300 dark:text-stone-700 ml-2">/</span>}
+                                    </span>
+                                ))}
+                            </div>
+                        </li>
+                    ))}
+                </ul>
             </div>
         </section>
 

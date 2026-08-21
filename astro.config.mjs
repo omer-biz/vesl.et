@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { remarkReadingTime } from './remark-reading-time.ts';
 
 import react from '@astrojs/react';
+import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,5 +24,5 @@ export default defineConfig({
       },
   },
 
-  integrations: [react()],
+  integrations: [react(), mdx()],
 });

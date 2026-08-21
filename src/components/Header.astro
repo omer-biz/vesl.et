@@ -2,20 +2,29 @@
 import VeslDef from './VeslDef.astro';
 ---
 
-<header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 border-b border-stone-400/30 pb-6">
+<header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 border-b border-stone-400/30 dark:border-stone-700/30 pb-6">
     <div class="mb-4 md:mb-0">
-        <h1 class="text-xl font-bold tracking-tight text-orange-800">
+        <h1 class="text-xl font-bold tracking-tight text-orange-800 dark:text-orange-400">
             <VeslDef term="vesl.et" position="bottom">
-                <a href="/" class="hover:text-orange-900 transition-colors">
-                    <span class="text-stone-600 mr-1">$</span> vesl.et
+                <a href="/" class="hover:text-orange-900 dark:hover:text-orange-300 transition-colors">
+                    <span class="text-stone-600 dark:text-stone-400 mr-1">$</span> vesl.et
                 </a>
             </VeslDef>
         </h1>
     </div>
     <nav class="space-x-6 text-sm lowercase">
-        <a href="/logs" class="hover:text-teal-700 hover:underline underline-offset-4 decoration-2">[logs]</a>
-        <a href="/categories" class="hover:text-teal-700 hover:underline underline-offset-4 decoration-2">[categories]</a>
-        <a href="/rss.xml" class="hover:text-teal-700 hover:underline underline-offset-4 decoration-2">[rss]</a>
-        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" class="hover:text-teal-700 hover:underline underline-offset-4 decoration-2">[resume]</a>
+        <a href="/logs" class="hover:text-teal-700 dark:hover:text-teal-400 hover:underline underline-offset-4 decoration-2">[logs]</a>
+        <a href="/categories" class="hover:text-teal-700 dark:hover:text-teal-400 hover:underline underline-offset-4 decoration-2">[categories]</a>
+        <a href="/rss.xml" class="hover:text-teal-700 dark:hover:text-teal-400 hover:underline underline-offset-4 decoration-2">[rss]</a>
+        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" class="hover:text-teal-700 dark:hover:text-teal-400 hover:underline underline-offset-4 decoration-2">[resume]</a>
+        <button id="theme-toggle" aria-label="Toggle dark mode" class="hover:text-teal-700 dark:hover:text-teal-400 hover:underline underline-offset-4 decoration-2 cursor-pointer">[theme]</button>
     </nav>
+    <script>
+      const themeToggle = document.getElementById('theme-toggle');
+      themeToggle?.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+        const isDark = document.documentElement.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+    </script>
 </header>

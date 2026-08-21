@@ -32,18 +32,18 @@ const cleanBody = (log) => log.body.replace(/[#*`_]/g, '');
 ---
 <BaseLayout title="logs">
 <Header />
-<main class="max-w-3xl mx-auto py-8 md:px-6 bg-stone-200 text-stone-800 font-mono">
+<main class="max-w-3xl mx-auto py-8 md:px-6 bg-stone-200 dark:bg-stone-950 text-stone-800 dark:text-stone-200 font-mono">
     <header class="mb-16">
-        <h1 class="text-2xl font-bold text-stone-900 flex items-center">
-            <span class="text-amber-600 mr-2">#</span> Index of Logs
+        <h1 class="text-2xl font-bold text-stone-900 dark:text-stone-100 flex items-center">
+            <span class="text-amber-600 dark:text-amber-500 mr-2">#</span> Index of Logs
         </h1>
-        <p class="text-stone-500 mt-2 text-sm italic">"The shortest pencil is longer than the longest memory."</p>
+        <p class="text-stone-500 dark:text-stone-500 mt-2 text-sm italic">"The shortest pencil is longer than the longest memory."</p>
     </header>
 
     {years.map((year) => (
     <section class="mb-12 px-2 md:px-0"> {/* Added padding for mobile safety */}
         <div class="flex items-center gap-4 mb-8">
-        <h2 class="text-md md:text-xl font-bold text-amber-700 bg-amber-700/10 px-2 py-0.5 rounded-sm">{year}</h2>
+        <h2 class="text-md md:text-xl font-bold text-amber-700 dark:text-amber-500 bg-amber-700/10 dark:bg-amber-500/10 px-2 py-0.5 rounded-sm">{year}</h2>
         <div class="h-px flex-grow bg-stone-400/30"></div>
         </div>
 
@@ -51,7 +51,7 @@ const cleanBody = (log) => log.body.replace(/[#*`_]/g, '');
         {logsByYear[Number(year)].map((log) => (
             <li class="group flex gap-4 md:gap-6 items-start">
             {/* Image Container */}
-            <div class="w-16 h-16 md:w-20 md:h-20 shrink-0 border border-stone-400/50 p-1 bg-stone-100 overflow-hidden">
+            <div class="w-16 h-16 md:w-20 md:h-20 shrink-0 border border-stone-400/50 dark:border-stone-700/50 p-1 bg-stone-100 dark:bg-stone-900 overflow-hidden">
                 <Image 
                 src={log.data.heroImage || placeholder} 
                 alt="Hero" 
@@ -64,21 +64,21 @@ const cleanBody = (log) => log.body.replace(/[#*`_]/g, '');
                 <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1 gap-1">
                 <a 
                     href={`/logs/${log.id}`} 
-                    class="text-sm md:text-lg font-bold group-hover:text-teal-700 underline-offset-4 decoration-2 group-hover:underline truncate"
+                    class="text-sm md:text-lg font-bold group-hover:text-teal-700 dark:group-hover:text-teal-400 underline-offset-4 decoration-2 group-hover:underline truncate"
                 >
                     {log.data.title}
                 </a>
-                <span class="text-[10px] md:text-xs text-stone-400 tabular-nums shrink-0">
+                <span class="text-[10px] md:text-xs text-stone-400 dark:text-stone-500 tabular-nums shrink-0">
                     {log.data.pubDate.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit' }).replace("/", "-")}
                 </span>
                 </div>
 
-                <p class="text-xs md:text-sm text-stone-600 leading-relaxed line-clamp-1 mb-2">
+                <p class="text-xs md:text-sm text-stone-600 dark:text-stone-400 leading-relaxed line-clamp-1 mb-2">
                 {log.data.description != "" ? log.data.description : cleanBody(log)}
                 </p>
 
                 {/* Tags - Added flex-wrap */}
-                <div class="flex flex-wrap gap-2 text-[10px] uppercase tracking-wider text-stone-500 font-bold">
+                <div class="flex flex-wrap gap-2 text-[10px] uppercase tracking-wider text-stone-500 dark:text-stone-500 font-bold">
                 {log.data.tags.map((tag: string) => (
                     <span>#{tag}</span>
                 ))}
@@ -89,14 +89,14 @@ const cleanBody = (log) => log.body.replace(/[#*`_]/g, '');
         </ul>
     </section>
     ))}
-    <nav class="mt-24 pt-8 border-t border-stone-400/30 flex justify-between items-center text-sm font-bold">
-        {page.url.prev ? <a href={page.url.prev} class="text-orange-800">[prev]</a> : <span class="text-stone-400">[prev]</span>}
+    <nav class="mt-24 pt-8 border-t border-stone-400/30 dark:border-stone-700/30 flex justify-between items-center text-sm font-bold">
+        {page.url.prev ? <a href={page.url.prev} class="text-orange-800 dark:text-orange-400">[prev]</a> : <span class="text-stone-400 dark:text-stone-500">[prev]</span>}
     
-        <div class="text-stone-500">
+        <div class="text-stone-500 dark:text-stone-500">
         Page {page.currentPage} of {page.lastPage}
         </div>
 
-        {page.url.next ? <a href={page.url.next} class="text-orange-800">[next]</a> : <span class="text-stone-400">[next]</span>}
+        {page.url.next ? <a href={page.url.next} class="text-orange-800 dark:text-orange-400">[next]</a> : <span class="text-stone-400 dark:text-stone-500">[next]</span>}
     </nav>
 </main>
 <Footer />

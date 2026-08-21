@@ -29,30 +29,30 @@ const projects = await getCollection("projects");
                 <Image
                     src={profile}
                     alt="Omer's profile picture"
-                    class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-sm border-2 border-stone-400/50 p-1 bg-stone-100 shadow-sm"
+                    class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-sm border-2 border-stone-400/50 dark:border-stone-700/50 p-1 bg-stone-100 dark:bg-stone-900 shadow-sm"
                 />
             </figure>
 
             <div>
                 <h1 class="text-2xl md:text-3xl font-bold leading-snug">
                     Welcome,
-                    <span class="text-teal-800 bg-teal-800/5 px-1 rounded-sm"
+                    <span class="text-teal-800 dark:text-teal-300 bg-teal-800/5 dark:bg-teal-400/10 px-1 rounded-sm"
                         >wanderer</span
                     >. I'm
-                    <span class="text-green-800 bg-green-800/5 px-1 rounded-sm"
+                    <span class="text-green-800 dark:text-green-400 bg-green-800/5 dark:bg-green-400/10 px-1 rounded-sm"
                         >Omer</span
                     >, and this is my digital
-                    <span class="text-blue-800 bg-blue-800/5 px-1 rounded-sm"
+                    <span class="text-blue-800 dark:text-blue-400 bg-blue-800/5 dark:bg-blue-400/10 px-1 rounded-sm"
                         >vessel</span
                     >. Thanks for dropping
-                    <span class="text-red-800 bg-red-800/5 px-1 rounded-sm"
+                    <span class="text-red-800 dark:text-red-400 bg-red-800/5 dark:bg-red-400/10 px-1 rounded-sm"
                         >anchor</span
                     >.
                 </h1>
             </div>
         </div>
 
-        <p class="text-lg text-stone-600 leading-relaxed max-w-2xl">
+        <p class="text-lg text-stone-600 dark:text-stone-400 leading-relaxed max-w-2xl">
             My history with computers goes back to when I was five, watching my
             uncles figure out how Paint works on Windows XP. Now, I’m not
             satisfied until I understand every aspect of the technology I’m
@@ -61,9 +61,9 @@ const projects = await getCollection("projects");
 
         <section class="mb-12 mt-8">
             <h2
-                class="text-lg font-bold mb-4 flex items-center uppercase tracking-widest text-stone-600"
+                class="text-lg font-bold mb-4 flex items-center uppercase tracking-widest text-stone-600 dark:text-stone-400"
             >
-                <span class="text-amber-600 mr-2">::</span> Contributions
+                <span class="text-amber-600 dark:text-amber-500 mr-2">::</span> Contributions
             </h2>
             <div
                 class="w-full max-w-4xl opacity-100 transition-opacity"
@@ -79,10 +79,10 @@ const projects = await getCollection("projects");
                         href="https://github.com/omer-biz"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="group relative text-lg font-bold text-orange-800 hover:text-teal-700 transition-colors flex items-center gap-2"
+                        class="group relative text-lg font-bold text-orange-800 dark:text-orange-400 hover:text-teal-700 dark:hover:text-teal-400 transition-colors flex items-center gap-2"
                     >
                         <span
-                            class="text-stone-600 text-sm font-bold tracking-widest"
+                            class="text-stone-600 dark:text-stone-400 text-sm font-bold tracking-widest"
                             >github:</span
                         >
                         <span class="font-mono">[@omer-biz]</span>
@@ -104,9 +104,9 @@ const projects = await getCollection("projects");
 
         <section class="mb-12">
             <h2
-                class="text-lg font-bold mb-8 flex items-center uppercase tracking-widest text-stone-600"
+                class="text-lg font-bold mb-8 flex items-center uppercase tracking-widest text-stone-600 dark:text-stone-400"
             >
-                <span class="text-amber-600 mr-2">::</span> Projects
+                <span class="text-amber-600 dark:text-amber-500 mr-2">::</span> Projects
             </h2>
 
             <div class="grid grid-cols-1 gap-8">
@@ -127,9 +127,9 @@ const projects = await getCollection("projects");
 
         <section>
             <h2
-                class="text-lg font-bold mb-8 flex items-center uppercase tracking-widest text-stone-600"
+                class="text-lg font-bold mb-8 flex items-center uppercase tracking-widest text-stone-600 dark:text-stone-400"
             >
-                <span class="text-amber-600 mr-2">::</span> Logs
+                <span class="text-amber-600 dark:text-amber-500 mr-2">::</span> Logs
             </h2>
             <ul class="space-y-6">
                 {
@@ -146,7 +146,7 @@ const projects = await getCollection("projects");
             <div class="mt-12">
                 <a
                     href="/logs"
-                    class="text-sm hover:text-orange-800 hover:underline underline-offset-4 decoration-2"
+                    class="text-sm hover:text-orange-800 dark:hover:text-orange-400 hover:underline underline-offset-4 decoration-2"
                 >
                     [ view all archives -> ]
                 </a>

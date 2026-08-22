@@ -27,3 +27,13 @@ html.theme-transition *:after {
   transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1) !important;
   transition-delay: 0 !important;
 }
+
+/* Ensure Astro Shiki code blocks switch with .dark class */
+html.dark .astro-code,
+html.dark .astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}

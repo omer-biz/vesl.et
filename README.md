@@ -1,46 +1,21 @@
-# Astro Starter Kit: Basics
+# vesl.et
 
-```sh
-npm create astro@latest -- --template basics
-```
+The digital vessel of Omer. A personal portfolio and dev log built with [Astro](https://astro.build), [React](https://reactjs.org/), and [Tailwind CSS v4](https://tailwindcss.com/).
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🚀 Quick Start
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
+All commands should be run from the root of the project:
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
 | `npm install`             | Installs dependencies                            |
 | `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| `npm run build`           | Builds your production site to `./dist/`         |
+| `npm run preview`         | Previews your build locally before deploying     |
 
-## 👀 Want to learn more?
+## 🛠️ Stack
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **Framework**: Astro 5
+- **Styling**: Tailwind CSS v4
+- **Content**: Markdown/MDX (with Shiki syntax highlighting)
+- **UI Components**: React & Astro Components
